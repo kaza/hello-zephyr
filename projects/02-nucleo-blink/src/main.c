@@ -18,8 +18,8 @@ int main(void)
     int ret;
     bool led_state = true;
 
-    printk("=== STM32 NUCLEO-F401RE Blink ===\n");
-    printk("Board: %s\n", CONFIG_BOARD);
+    printk("===Zebra STM32 NUCLEO-F401RE Blink ===\n");
+    printk("Board name of this zebra: %s\n", CONFIG_BOARD);
 
     if (!gpio_is_ready_dt(&led)) {
         printk("Error: LED device not ready\n");
@@ -38,7 +38,7 @@ int main(void)
         gpio_pin_set_dt(&led, led_state);
         printk("LED: %s\n", led_state ? "ON" : "OFF");
         led_state = !led_state;
-        k_msleep(500);
+        k_msleep(1000);
     }
 
     return 0;
