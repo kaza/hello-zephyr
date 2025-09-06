@@ -33,12 +33,34 @@ int main(void)
     }
 
     printk("LED Blink Started! Watch the green LED (LD2)!\n");
+    printk("Speed ramp: 2000ms -> 10ms -> 2000ms\n");
 
+    int delay_ms = 2000;
+    int direction = -1;  /* -1 = speeding up, 1 = slowing down */
+    
     while (1) {
         gpio_pin_set_dt(&led, led_state);
-        printk("LED: %s\n", led_state ? "ON" : "OFF");
+        printk("LED: %s (delay: %dms)\n", led_state ? "ON" : "OFF", delay_ms);
         led_state = !led_state;
-        k_msleep(1000);
+        
+        /* Adjust speed by 10% */
+        if (direction == -1) {
+            delay_ms = delay_ms * 90 / 100;  /* Speed up by 10% */
+            if (delay_ms <= 10) {
+                delay_ms = 10;
+                direction = 1;  /* Start slowing down */
+                printk("=== FASTEST! Now slowing down ===\n");
+            }
+        } else {
+            delay_ms = delay_ms * 110 / 100;  /* Slow down by 10% */
+            if (delay_ms >= 2000) {
+                delay_ms = 2000;
+                direction = -1;  /* Start speeding up */
+                printk("=== SLOWEST! Now speeding up ===\n");
+            }
+        }
+        
+        k_msleep(delay_ms);
     }
 
     return 0;
