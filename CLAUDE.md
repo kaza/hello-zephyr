@@ -72,6 +72,12 @@ workspace/
 ## Project Overview
 This is a Zephyr RTOS learning project focused on embedded systems development.
 
+### Version Information
+- **Zephyr RTOS:** v3.7.0 LTS (Long Term Support until ~2029)
+- **Zephyr SDK:** v0.16.8 (Latest stable SDK)
+- **West:** v1.4.0
+- **Target Boards:** ESP32, QEMU (for simulation)
+
 ## Workspace Structure
 ```
 hello-zephyr/
@@ -104,14 +110,14 @@ hello-zephyr/
 
 ### Key Commands
 ```bash
-# Initialize workspace
-west init -m https://github.com/zephyrproject-rtos/zephyr --mr main
+# ALWAYS activate Python environment first!
+source ~/zephyr-venv/bin/activate
 
-# Update modules
-west update
+# Set Zephyr environment
+export ZEPHYR_BASE=~/zephyrproject/zephyr
 
 # Build for a specific board (example: qemu_cortex_m3)
-west build -b qemu_cortex_m3 samples/hello_world
+west build -b qemu_cortex_m3
 
 # Flash to device
 west flash
