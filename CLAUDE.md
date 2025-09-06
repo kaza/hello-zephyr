@@ -76,7 +76,27 @@ This is a Zephyr RTOS learning project focused on embedded systems development.
 - **Zephyr RTOS:** v3.7.0 LTS (Long Term Support until ~2029)
 - **Zephyr SDK:** v0.16.8 (Latest stable SDK)
 - **West:** v1.4.0
-- **Target Boards:** ESP32, QEMU (for simulation)
+
+### Hardware Boards
+
+#### ⚠️ ESP32-C6-WROOM-1 (BARE MODULE - ISSUES)
+- **Type:** Bare module, NOT a development board
+- **Board identifier:** `esp32c6_devkitc` (requires DevKit, not bare module!)
+- **Features:** WiFi 6, BLE 5.3, 320KB RAM, 4MB Flash
+- **STATUS:** ❌ Not working with Zephyr - stuck in bootloader
+- **Issue:** Bare module lacks USB-UART bridge, auto-reset circuit, boot resistors
+- **Solution:** Need proper ESP32-C6 DevKit or external circuitry
+- **See:** `projects/01-esp32c6-blink/WORKLOG.md` for details
+
+#### ✅ STM32 NUCLEO-F401RE (RECOMMENDED)
+- **Type:** Complete development board with built-in debugger
+- **Board identifier:** `nucleo_f401re`
+- **Features:** 84MHz Cortex-M4, 96KB RAM, 512KB Flash, Arduino headers
+- **Built-in:** ST-Link debugger, USB serial, LED, reset button
+- **STATUS:** Ready to use - no additional hardware needed
+
+#### QEMU
+- For simulation/testing without hardware
 
 ## Workspace Structure
 ```
