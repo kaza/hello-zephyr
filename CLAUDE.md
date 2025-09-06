@@ -21,10 +21,46 @@ This file provides guidance to Claude when working with this Zephyr learning rep
 - ASK "Would you like me to fix/implement this?"
 - WAIT for explicit approval before making changes
 
-### RULE #3: DOCUMENT DECISIONS
-- Document design decisions, technical context, and known issues
-- Create/update local documentation as needed
-- Track what worked, what didn't, and why
+### RULE #3: DOCUMENT EVERYTHING - STRUCTURED APPROACH
+
+**Documentation File Structure:**
+```
+workspace/
+├── CLAUDE-INDEX.md      # Single master index at root - maps ALL documentation
+├── CLAUDE.md            # Workspace-level rules and setup
+└── any-directory/
+    ├── CLAUDE.md        # Technical decisions, architecture, design choices
+    └── WORKLOG.md       # Chronological log: attempts, errors, solutions
+```
+
+**WORKLOG.md Format:**
+```markdown
+## YYYY-MM-DD: Task Description
+- **Tried:** Command or approach attempted
+- **Error:** What went wrong
+- **Solution:** What fixed it
+- **Workaround:** Temporary fix if needed
+- **Status:** ✅ Working / ❌ Failed / ⚠️ Partial
+```
+
+**Documentation Rules:**
+1. ONE CLAUDE-INDEX.md at root - update when adding ANY documentation
+2. Each directory gets its own CLAUDE.md (design) and WORKLOG.md (progress)
+3. Document immediately - especially failures (prevents repeating mistakes)
+4. Keep entries dated and searchable
+
+### RULE #4: INSTALLATION TRANSPARENCY
+**Before installing ANYTHING:**
+- Tell user WHAT will be installed
+- WHERE it will be installed (prefer LOCAL installations)
+- WHY it's needed
+- Document in WORKLOG.md immediately after
+
+**Installation Policy:**
+- SDK/Toolchains → LOCAL in user home (`~/`)
+- Python packages → LOCAL with `--user` flag
+- System tools (cmake, ninja) → Global via brew only when necessary
+- Document exact paths and versions installed
 
 ### 🎓 TUTORIAL PROJECT WORKFLOW
 **ALWAYS explain what you're doing and WHY:**

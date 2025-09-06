@@ -3,14 +3,24 @@ build/
 build_*/
 twister-out/
 twister-out*/
+.cache/
 
-# West
+# West workspace (if initialized locally)
 .west/
 modules/
 tools/
 zephyr/
 bootloader/
 zmk/
+
+# ESP32 specific
+sdkconfig
+sdkconfig.old
+esp-idf/
+
+# Device Tree temporary files
+*.dts.pre.tmp
+*.dts.tmp
 
 # IDE
 .vscode/
@@ -51,3 +61,24 @@ _build/
 doxygen/
 html/
 latex/
+
+# Zephyr workspace downloads
+zephyr-sdk-*.tar.*
+zephyr-sdk-*/
+
+# Log files
+*.log
+serial.log
+debug.log
+
+# Flash/debug files
+*.jlink
+*.openocd
+flash_cmd.txt
+
+# Temporary editor files
+*.orig
+*.rej
+.tags
+TAGS
+cscope.*
