@@ -1,0 +1,53 @@
+# Zephyr build artifacts
+build/
+build_*/
+twister-out/
+twister-out*/
+
+# West
+.west/
+modules/
+tools/
+zephyr/
+bootloader/
+zmk/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+env/
+
+# C/C++ artifacts
+*.o
+*.a
+*.so
+*.dll
+*.exe
+*.out
+*.hex
+*.bin
+*.elf
+*.map
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Documentation
+_build/
+doxygen/
+html/
+latex/
